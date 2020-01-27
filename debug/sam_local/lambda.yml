@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  EchoLambda:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.restRoute
+      Runtime: nodejs10.x
+      CodeUri: '../..'
+      Description: ''
+      MemorySize: 128
+      Timeout: 300
+      Role: >-
+        arn:aws:iam::111111111111:role/MyLambdaIAMRole
+      Environment:
+        Variables:
+          NEW_RELIC_NO_CONFIG_FILE: true
+          NEW_RELIC_APP_NAME: 'double-transaction-repro'
+          NEW_RELIC_LOG: 'stdout'

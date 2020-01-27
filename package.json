@@ -1,0 +1,26 @@
+{
+  "name": "double-transaction-repo",
+  "version": "0.1.0",
+  "description": "Reproduce issue with double transaction counts in Lambda.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "tsc",
+    "start": "node -e \"require('./webserver').startWebServer(8000)\"",
+    "invoke": "debug/sam_local/run.sh"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.40",
+    "@types/request-promise-native": "^1.0.17",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "@nestjs/common": "^6.11.1",
+    "@nestjs/core": "^6.11.1",
+    "@nestjs/platform-fastify": "^6.11.1",
+    "newrelic": "^6.2.0",
+    "reflect-metadata": "^0.1.13",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.8",
+    "rxjs": "^6.5.4"
+  }
+}
