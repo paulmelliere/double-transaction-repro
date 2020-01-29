@@ -11,6 +11,7 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.40",
     "@types/request-promise-native": "^1.0.17",
+    "serverless": "^1.61.3",
     "typescript": "^3.7.5"
   },
   "dependencies": {

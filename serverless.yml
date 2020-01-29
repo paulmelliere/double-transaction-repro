@@ -1,0 +1,15 @@
+service: double-transaction-repro
+provider:
+  name: aws
+  runtime: nodejs10.x
+region: us-east-1
+functions:
+  EchoLambda:
+    handler: index.restRoute
+    environment:
+      NEW_RELIC_LICENSE_KEY: 'YOUR_KEY_HERE'
+      NEW_RELIC_NO_CONFIG_FILE: true
+      NEW_RELIC_APP_NAME: 'double-transaction-repo'
+      NEW_RELIC_ACCOUNT_ID: 'YOUR_ACCOUNT_ID_HERE'
+      NEW_RELIC_TRUSTED_ACCOUNT_KEY: 'YOUR_TRUSTED_ACCOUNT_KEY_HERE'
+      NEW_RELIC_NATIVE_METRICS_ENABLED: true
