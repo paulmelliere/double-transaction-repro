@@ -1,3 +1,4 @@
+import * as newrelic from 'newrelic';
 import { ALBEvent, ALBResult } from 'aws-lambda';
 import * as rp from 'request-promise-native';
 import * as request from 'request';
@@ -36,9 +37,16 @@ export function getSocket (): string {
   return `/tmp/server-${randomSuffix}.sock`;
 }
 
+let currentSegment = null;
+
+export function getCurrentSegment() {
+  return currentSegment;
+}
+
 export async function forwardRequest (event: ALBEvent, socket: string): Promise<ALBResult> {
   const requestOptions: rp.Options = mapEventToHttpRequest(event);
   requestOptions.baseUrl = `http://unix:${socket}:/`;
+  currentSegment = newrelic.agent.tracer.getSegment();
 
   try {
     const response: request.Response = await rp(requestOptions);
